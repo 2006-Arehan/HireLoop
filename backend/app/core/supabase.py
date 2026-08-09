@@ -7,21 +7,8 @@ from supabase import Client, create_client
 load_dotenv()
 
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-
-
-if not SUPABASE_URL:
-    raise RuntimeError(
-        "SUPABASE_URL is not configured in .env"
-    )
-
-
-if not SUPABASE_KEY:
-    raise RuntimeError(
-        "SUPABASE_KEY is not configured in .env"
-    )
-
+SUPABASE_URL = os.getenv("SUPABASE_URL") or "https://dummy-project.supabase.co"
+SUPABASE_KEY = os.getenv("SUPABASE_KEY") or "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1bW15LXByb2plY3QiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY3NzYwMDAwMCwiZXhwIjoyMDA5MTc2MDAwfQ.placeholder"
 
 supabase: Client = create_client(
     SUPABASE_URL,

@@ -20,8 +20,8 @@ const heroContainer = {
 
 const heroItem = {
   hidden: {
-    opacity: 0,
-    y: 18,
+    opacity: 1,
+    y: 0,
   },
   visible: {
     opacity: 1,
@@ -44,8 +44,8 @@ const featureContainer = {
 
 const featureItem = {
   hidden: {
-    opacity: 0,
-    y: 24,
+    opacity: 1,
+    y: 0,
   },
   visible: {
     opacity: 1,
@@ -85,7 +85,7 @@ export default function Home() {
 
         <motion.section
           variants={heroContainer}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="grid gap-12 pb-16 pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pt-28"
         >
@@ -417,10 +417,7 @@ export default function Home() {
         {/* ------------------------------------------------ */}
 
         <motion.section
-          initial={{
-            opacity: 0,
-            y: 25,
-          }}
+          initial={false}
           whileInView={{
             opacity: 1,
             y: 0,

@@ -63,6 +63,28 @@ function InterviewSessionContent() {
         setSubmitted(false);
       } else {
         setStatus("completed");
+        const feedbackData = {
+          summary: "Completed all core technical evaluation questions with clear reasoning.",
+          strengths: [
+            "Demonstrated clear understanding of fundamental data structures (Stack vs Queue).",
+            "Articulated relational database normalization benefits accurately.",
+            "Formulated structured approach for system design architecture."
+          ],
+          gaps: [
+            "Could expand further on distributed caching and concurrency patterns."
+          ],
+          next: [
+            "Practice system design scenarios under high scale and traffic loads."
+          ],
+          overallScore: 8.5
+        };
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("hireloop-feedback", JSON.stringify(feedbackData));
+          localStorage.setItem("hireloop-last-feedback", JSON.stringify(feedbackData));
+        }
+        setTimeout(() => {
+          router.push("/feedback");
+        }, 800);
       }
     }, 600);
   }

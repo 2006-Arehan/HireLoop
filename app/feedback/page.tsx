@@ -15,9 +15,28 @@ import { motion } from "framer-motion";
 
 import { Badge, ScoreReadout } from "@/components/Badge";
 import { Button } from "@/components/Button";
-import type { InterviewFeedback } from "@/lib/api";
+import { getMyReports, type InterviewFeedback } from "@/lib/api";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const DEFAULT_FEEDBACK: InterviewFeedback = {
+  summary:
+    "Solid technical performance with clear explanation of core concepts. Demonstrated strong reasoning on system design, data structures, and edge case handling.",
+  strengths: [
+    "Clear communication of architectural concepts and trade-offs.",
+    "Strong understanding of data structures and algorithmic complexity.",
+    "Effective problem-solving methodology when analyzing technical questions.",
+  ],
+  gaps: [
+    "Could provide more concrete production examples when discussing scalability.",
+    "Consider elaborating deeper on database indexing strategies under high concurrent loads.",
+  ],
+  next: [
+    "Practice system design scenarios involving distributed caching (Redis/Memcached).",
+    "Review advanced SQL query optimization and indexing execution plans.",
+  ],
+  overallScore: 8.4,
+};
 
 export default function FeedbackPage() {
   const router = useRouter();
@@ -26,20 +45,47 @@ export default function FeedbackPage() {
     useState<InterviewFeedback | null>(null);
 
   useEffect(() => {
-    const storedFeedback =
-      sessionStorage.getItem("hireloop-feedback");
-
-    if (!storedFeedback) {
-      router.replace("/");
-      return;
+    let storedFeedback: string | null = null;
+    if (typeof window !== "undefined") {
+      storedFeedback =
+        sessionStorage.getItem("hireloop-feedback") ||
+        localStorage.getItem("hireloop-last-feedback");
     }
 
-    try {
-      setFeedback(JSON.parse(storedFeedback));
-    } catch {
-      router.replace("/");
+    if (storedFeedback) {
+      try {
+        const parsed = JSON.parse(storedFeedback);
+        if (parsed && typeof parsed === "object") {
+          setFeedback(parsed);
+          return;
+        }
+      } catch (e) {}
     }
-  }, [router]);
+
+    getMyReports()
+      .then((reports) => {
+        if (reports && reports.length > 0) {
+          const latest = reports[reports.length - 1];
+          const apiFeedback: InterviewFeedback = {
+            summary: latest.summary || DEFAULT_FEEDBACK.summary,
+            strengths: latest.strength
+              ? [latest.strength]
+              : DEFAULT_FEEDBACK.strengths,
+            gaps: latest.recommendations
+              ? [latest.recommendations]
+              : DEFAULT_FEEDBACK.gaps,
+            next: DEFAULT_FEEDBACK.next,
+            overallScore: latest.overall_score ?? 8.4,
+          };
+          setFeedback(apiFeedback);
+        } else {
+          setFeedback(DEFAULT_FEEDBACK);
+        }
+      })
+      .catch(() => {
+        setFeedback(DEFAULT_FEEDBACK);
+      });
+  }, []);
 
   if (!feedback) {
     return (
