@@ -1,6 +1,6 @@
 # HireLoop — Adaptive AI Interview Platform
 
-> 🚀 **LIVE DEMO**: [https://equally-field-reducing-algorithm.trycloudflare.com](https://equally-field-reducing-algorithm.trycloudflare.com)  
+> 🚀 **LIVE DEMO**: [https://feet-introduces-major-instant.trycloudflare.com](https://feet-introduces-major-instant.trycloudflare.com)  
 > **Problem Statement 2**: The Interview Agent
 
 An AI-powered adaptive interview platform featuring real-time depth-of-knowledge evaluation, candidate proctoring, and automated skill breakdown reports.
