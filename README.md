@@ -1,7 +1,9 @@
-# HireLoop — Frontend Foundation
+# HireLoop — Adaptive AI Interview Platform
 
-An AI-powered adaptive interview platform. This is the UI foundation — login,
-signup, and both dashboards — built to plug a real backend into later.
+> 🚀 **LIVE DEMO**: [https://equally-field-reducing-algorithm.trycloudflare.com](https://equally-field-reducing-algorithm.trycloudflare.com)  
+> **Problem Statement 2**: The Interview Agent
+
+An AI-powered adaptive interview platform featuring real-time depth-of-knowledge evaluation, candidate proctoring, and automated skill breakdown reports.
 
 ## Stack
 

@@ -2,7 +2,7 @@
 
 > **Problem Statement 2**: The Interview Agent  
 > **Repository**: [https://github.com/2006-Arehan/HireLoop/tree/mvp](https://github.com/2006-Arehan/HireLoop/tree/mvp)  
-> **Live Demo**: [https://spreading-regulation-reduction-lonely.trycloudflare.com](https://spreading-regulation-reduction-lonely.trycloudflare.com)
+> **Live Demo**: [https://equally-field-reducing-algorithm.trycloudflare.com](https://equally-field-reducing-algorithm.trycloudflare.com)
 
 ---
 
