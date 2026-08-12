@@ -2,7 +2,7 @@
 
 > **Problem Statement 2**: The Interview Agent  
 > **Repository**: [https://github.com/2006-Arehan/HireLoop/tree/mvp](https://github.com/2006-Arehan/HireLoop/tree/mvp)  
-> **Live Demo**: [https://feet-introduces-major-instant.trycloudflare.com](https://feet-introduces-major-instant.trycloudflare.com)
+> **Live Demo**: [https://notebooks-kde-commons-apps.trycloudflare.com](https://notebooks-kde-commons-apps.trycloudflare.com)
 
 ---
 
